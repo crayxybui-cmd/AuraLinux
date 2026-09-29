@@ -1,0 +1,30 @@
+name: AuraLinux ISO Build
+
+on:
+  push:
+    branches: [ "main", "master" ]
+  workflow_dispatch: # GitHub arayüzünden manuel tetikleme butonu ekler
+
+jobs:
+  build-iso:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Repositoriyi Klonla
+        uses: actions/checkout@v4
+
+      - name: Arch Linux Docker Konteyneri ile ISO Derle
+        run: |
+          docker run --rm --privileged \
+            -v ${{ github.workspace }}:/workspace \
+            archlinux:latest \
+            bash -c "
+              pacman -Syu --noconfirm archiso &&
+              mkarchiso -v -w /tmp/archiso-tmp -o /workspace/out /workspace
+            "
+
+      - name: ISO Dosyasını Yükle (Artifact)
+        uses: actions/upload-artifact@v4
+        with:
+          name: AuraLinux-ISO
+          path: out/*.iso
+          retention-days: 7
