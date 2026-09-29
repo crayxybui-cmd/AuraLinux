@@ -1,0 +1,9 @@
+NAME="Aura Linux"
+PRETTY_NAME="Aura Linux"
+ID=auralinux
+ID_LIKE=arch
+BUILD_ID=rolling
+ANSI_COLOR="38;2;198;160;246"
+HOME_URL="https://github.com/auralinux"
+BUG_REPORT_URL="https://github.com/auralinux"
+LOGO=archlinux

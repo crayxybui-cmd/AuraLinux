@@ -1,0 +1,41 @@
+{
+    "layer": "top",
+    "position": "top",
+    "height": 38,
+    "margin-top": 6,
+    "margin-left": 10,
+    "margin-right": 10,
+    "spacing": 8,
+    "modules-left": ["hyprland/workspaces", "hyprland/window"],
+    "modules-center": ["clock"],
+    "modules-right": ["pulseaudio", "network", "battery", "custom/power"],
+
+    "hyprland/workspaces": {
+        "disable-scroll": true,
+        "all-outputs": true,
+        "format": "{name}"
+    },
+    "clock": {
+        "format": " {:%H:%M  󰃭 %d %b}",
+        "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>"
+    },
+    "pulseaudio": {
+        "format": "{icon} {volume}%",
+        "format-muted": "󰝟 Mute",
+        "format-icons": { "default": ["", "", ""] }
+    },
+    "network": {
+        "format-wifi": " {essid}",
+        "format-ethernet": "󰈀 Connected",
+        "format-disconnected": "󰤮 Disconnected"
+    },
+    "battery": {
+        "format": "{icon} {capacity}%",
+        "format-icons": ["󰂎", "󰁺", "󰁬", "󰁞", "󰂀", "󰁹"]
+    },
+    "custom/power": {
+        "format": "",
+        "tooltip": false,
+        "on-click": "~/.config/hypr/scripts/powermenu.sh"
+    }
+}
